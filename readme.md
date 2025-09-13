@@ -42,20 +42,27 @@ A JSON document that defines what a user/group is allowed to do
 ```JSON
 {
     "Version": "2012-10-17",
+    "Id:"S3-Account-Permissions",
     "Statement": [
         {
+            "Sid":"1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": ["arn:aws:iam::123456789012:root"]
+            }
             "Action": [
                 "iam:GetContextKeysForCustomPolicy",
                 "iam:GetContextKeysForPrincipalPolicy",
                 "iam:SimulateCustomPolicy",
                 "iam:SimulatePrincipalPolicy"
             ],
-            "Effect": "Allow",
-            "Resource": "*"
+            
+            "Resource": ["arn:aws:s3:mybucket/*"]
         }
     ]
 }
 ```
+
 ## 🟨 IAM Password Policy
 - Minimum length 
 - Require specific char types 
